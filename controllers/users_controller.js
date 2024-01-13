@@ -1,13 +1,18 @@
 const User = require('../models/user');
 
 module.exports.profile = function(req , res){
-    return res.render('user' , {
+    return res.render('user_profile' , {
         title: "profile"
     })
 }
 
 //render the sign up part
 module.exports.signUp = function(req ,res){
+
+    if(req.isAuthenticated()){
+        return res.redirect('/users/profile');
+    }
+
     return res.render('user_signup' , {
         title: "Codeial|Sign Up"
     })
@@ -15,6 +20,11 @@ module.exports.signUp = function(req ,res){
 
 //render the sign in page
 module.exports.signIn = function(req ,res){
+
+    if(req.isAuthenticated()){
+        return res.redirect('/users/profile');
+    }
+
     return res.render('user_signin' , {
         title: "Codeial|Sign In"
     })
@@ -46,5 +56,17 @@ module.exports.create = async function(req, res) {
 
 // sign in and create a session for the user
 module.exports.createSession = function(req , res){
-    //TODO later
+    return res.redirect('/');
+}
+
+
+module.exports.distroySession = function(req , res){
+    req.logout((err) => {
+        if (err) {
+          console.error(err);
+          return res.status(500).send('Internal Server Error');
+        }
+        // Redirect or respond after logout
+        res.redirect('/'); // You can redirect to a different page or send a response
+      });
 }
