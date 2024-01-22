@@ -1,3 +1,15 @@
-<footer>
-    Page Footer
+<footer id="footer">
+    <p>codeial: all right reserved</p>
+    <p id="pages">
+        <a href="/">Home</a>
+        <% if(locals.user){%>
+            <!-- <li> -->
+                <a href="/users/profile">
+                    Profile
+                </a>
+        <%}else{%>
+                <a href="/users/sign-in">Profile</a>
+        <%}%>
+    </p>
+
 </footer>

@@ -1,17 +1,8 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <title>
-            <%= title %>
-        </title>
-    </head>
-    <body>
-        <h1>Sign In</h1>
-        <form action="/users/create-session" method="POST">
-            <input type="email" name="email" placeholder="Email" required>
-            <input type="password" name="password" placeholder="Password" required>
+<h1>Codeial / Sign In</h1>
 
-            <input type="submit" value="sign In">
-        </form>
-    </body>
-</html>
+<form action="/users/create-session" method="POST">
+    <input type="email" name="email" placeholder="Email" required>
+    <input type="password" name="password" placeholder="Password" required>
+
+    <input type="submit" value="sign In">
+</form>

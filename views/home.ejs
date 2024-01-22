@@ -1,4 +1,9 @@
 
 <h1>
-    Codeial / <%= title %>
+    <% if(locals.user){%>
+        <p>Codeial / Home Page</p>
+        Welcome <%=user.name%>!!
+    <%}else{%>
+            Codeial / Home Page
+    <%}%>
 </h1>

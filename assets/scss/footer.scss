@@ -1,0 +1,19 @@
+#footer{
+    background-color: #777;
+    display: flex;
+    flex-direction: row;
+    color: rgb(218, 218, 218);
+    font-size: 13px;
+    #pages {
+        display: flex;
+        align-items: center; 
+        flex-direction: column;
+        a {
+            margin-left: 10px;
+            text-decoration: none;
+            color: rgb(218, 218, 218);
+        }
+    }
+
+
+}

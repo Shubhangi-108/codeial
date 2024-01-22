@@ -1,0 +1,14 @@
+#footer {
+  background-color: #777;
+  display: flex;
+  flex-direction: row;
+  color: #dadada;
+  font-size: 13px; }
+  #footer #pages {
+    display: flex;
+    align-items: center;
+    flex-direction: column; }
+    #footer #pages a {
+      margin-left: 10px;
+      text-decoration: none;
+      color: #dadada; }
