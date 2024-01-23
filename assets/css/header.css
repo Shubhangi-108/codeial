@@ -1,10 +1,24 @@
 #header {
-  background-color: #00eaff;
+  padding: 0;
+  background-color: #777;
   display: flex;
   justify-content: space-between;
-  height: 50px;
-  color: white;
+  align-items: center;
+  color: #dadada;
   font-weight: bold; }
   #header a {
     text-decoration: none;
-    color: white; }
+    color: #dadada;
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    font-size: 15px; }
+    #header a:hover {
+      transition: all;
+      text-decoration: underline;
+      color: white; }
+  #header #codeial {
+    margin: 0;
+    text-align: center; }
+  #header ul {
+    margin: 0; }
