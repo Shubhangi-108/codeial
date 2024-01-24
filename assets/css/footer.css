@@ -1,4 +1,6 @@
 #footer {
+  position: relative;
+  top: 100%;
   background-color: #777;
   display: flex;
   flex-direction: row;

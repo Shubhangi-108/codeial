@@ -8,9 +8,9 @@
 </h1>
 
 <section id="feed-posts">
-
+    <h4>Posts</h4>
     <% if (locals.user){%>
-        <h4>Posts</h4>
+
         <form action="/posts/create" id="new-post-form" method="POST">
             <textarea name="content" cols="30" rows="3" placeholder="Type here..." required></textarea>
             <input type="submit" value="Post">
@@ -21,6 +21,13 @@
             <%for( post of posts){%>
                 <li>
                     <p>
+                        <% if((locals.user)&&(locals.user.id == post.user.id)){%>
+                            <small>
+                                <a id="delete-button" href="/posts/destroy/<%=post.id%>">
+                                    <i class="fa-solid fa-trash"></i>
+                                </a>
+                            </small>
+                        <%}%>
                         <%= post.content %>
                         <br>
                         <small>
@@ -42,6 +49,13 @@
                                 <%for( comment of post.comments){%>
 
                                     <p>
+                                        <% if((locals.user)&&(locals.user.id == comment.user.id)){%>
+                                            <small>
+                                                <a id="delete-button" href="/comments/destroy/<%=comment.id%>">
+                                                    <i class="fa-solid fa-eraser"></i>
+                                                </a>
+                                            </small>
+                                        <%}%>
                                         <%= comment.content %>
                                         <br>
                                         <small>
