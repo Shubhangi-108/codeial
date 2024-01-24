@@ -1,0 +1,8 @@
+#delete-button{
+    text-decoration: none;
+    color: #777;
+    &:hover{
+        transition: all;
+        color: black;
+    }
+}
