@@ -86,17 +86,20 @@ module.exports.create = async function(req, res) {
 
 // sign in and create a session for the user
 module.exports.createSession = function(req , res){
+    req.flash('success' , 'Logged in Successfully');
     return res.redirect('/');
 }
 
 
 module.exports.distroySession = function(req , res){
+
     req.logout((err) => {
         if (err) {
           console.error(err);
           return res.status(500).send('Internal Server Error');
         }
+        req.flash('success' , 'Logged out Successfully')
         // Redirect or respond after logout
         res.redirect('/'); // You can redirect to a different page or send a response
-      });
+    });
 }
