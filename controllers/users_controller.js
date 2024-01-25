@@ -1,10 +1,40 @@
 const User = require('../models/user');
 
-module.exports.profile = function(req , res){
-    return res.render('user_profile' , {
-        title: "profile"
-    })
-}
+module.exports.profile = async function(req, res) {
+    try {
+        const user = await User.findById(req.params.id);
+        if (!user) {
+            return res.status(404).send("User not found");
+        }
+
+        return res.render('user_profile', {
+            title: "User profile",
+            profile_user: user
+        });
+    } catch (err) {
+        console.error('Error in fetching user profile:', err);
+        return res.status(500).send("Internal Server Error");
+    }
+};
+
+module.exports.update = async function(req, res) {
+    try {
+        if (req.user.id == req.params.id) {
+            const user = await User.findByIdAndUpdate(req.params.id, req.body);
+
+            if (!user) {
+                return res.status(404).send("User not found");
+            }
+
+            return res.redirect('back');
+        } else {
+            return res.status(401).send('Unauthorized');
+        }
+    } catch (err) {
+        console.error('Error in updating user profile:', err);
+        return res.status(500).send("Internal Server Error");
+    }
+};
 
 //render the sign up part
 module.exports.signUp = function(req ,res){
