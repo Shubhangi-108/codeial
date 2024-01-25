@@ -15,6 +15,7 @@ module.exports.create = function (req, res) {
                 post: req.body.post,
                 user: req.user._id
             })
+            
             .then(comment => {
                 post.comments.push(comment);
                 post.save()
@@ -25,14 +26,18 @@ module.exports.create = function (req, res) {
                         console.error('Error in saving post:', saveError);
                         return res.redirect('back');
                     });
+                    req.flash('success' , 'comment Published')
             })
+            
             .catch(commentError => {
                 console.error('Error in creating comment:', commentError);
+                req.flash('error' , 'Error in creating comment');
                 return res.redirect('back');
             });
         })
         .catch(findError => {
             console.error('Error in finding post:', findError);
+            req.flash('error' , findError)
             return res.redirect('back');
         });
 };
@@ -67,7 +72,7 @@ module.exports.destroy = async function (req, res) {
             await comment.deleteOne();
 
             await Post.findByIdAndUpdate(postId, { $pull: { comments: req.params.id } });
-
+            req.flash('success' , 'Comment deleted successfully');
             return res.redirect('back');
         } else {
             return res.status(403).send("Unauthorized");
