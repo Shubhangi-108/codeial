@@ -18,7 +18,11 @@
       text-decoration: underline;
       color: white; }
   #header #codeial {
-    margin: 0;
+    margin-left: 5px;
+    margin-top: 0;
+    margin-bottom: 0px;
     text-align: center; }
   #header ul {
-    margin: 0; }
+    margin-right: 5px;
+    margin-top: 0;
+    margin-bottom: 0px; }
