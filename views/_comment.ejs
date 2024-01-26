@@ -1,8 +1,8 @@
-<li>
+<li id="comment-<%= comment._id %>">
     <p>
         <% if((locals.user)&&(locals.user.id == comment.user.id)){%>
             <small>
-                <a id="delete-button" href="/comments/destroy/<%=comment.id%>">
+                <a class="delete-comment-button" id="delete-button" href="/comments/destroy/<%=comment.id%>">
                     <i class="fa-solid fa-eraser"></i>
                 </a>
             </small>
@@ -10,11 +10,7 @@
         <%= comment.content %>
         <br>
         <small>
-            <% if (comment.user && comment.user.name) { %>
-                <%= comment.user.name %>
-            <% } else { %>
-                Unknown User
-            <% } %>
+            <%= comment.user.name %>
         </small>
     </p>
 </li>
