@@ -1,4 +1,8 @@
 body{
     font-family: sans-serif;
-    margin: 5px;
+    flex-grow: 1;
+    #layout-main{
+        position: relative;
+        // height: 100%;
+    }
 }
