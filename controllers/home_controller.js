@@ -1,6 +1,7 @@
 const Post = require( '../models/post');
 const User = require('../models/user');
 
+// console.log('hello1');
 
 module.exports.home = async function(req , res){
     // console.log(req.cookies);

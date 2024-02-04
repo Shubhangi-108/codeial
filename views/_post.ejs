@@ -1,6 +1,6 @@
 <li id="post-<%=post._id%>">
     <p>
-        <% if((locals.user)&&(locals.user.id == post.user.id)){%>
+        <% if(post && post.user && locals.user && locals.user.id && locals.user.id == post.user.id){%>
             <small>
                 <a class="delete-post-button" id="delete-button" href="/posts/destroy/<%=post.id%>">
                     <i class="fa-solid fa-trash"></i>
@@ -10,7 +10,12 @@
         <%= post.content %>
         <br>
         <small>
-            <%= post.user.name%>
+            <% if ( post && post.user){%>
+                <%= post.user.name %>
+            <%}else{%>
+                Unknown user
+            <%}%>
+            
         </small>
     </p>
 
@@ -24,7 +29,7 @@
         <%}%>
 
         <div class="post-comments-list">
-            <ul id="post-comment-<%=post._id%>">
+            <ul id="post-comments-<%=post._id%>">
                 <%for( comment of post.comments){%>
 
                     <%-include('_comment')-%>
