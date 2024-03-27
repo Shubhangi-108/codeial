@@ -1,5 +1,6 @@
 const Post = require('../models/post');
 const Comment = require('../models/comment');
+const Like = require('../models/like');
 
 // module.exports.create = function( req , res ){
 //     Post.create({
@@ -77,6 +78,11 @@ module.exports.destroy = async function (req, res) {
 
         // Check if the user is the owner of the post
         if (post.user == req.user.id) {
+
+
+            await Like.deleteMany({likeable: post , onModel:'Post'});
+            await Like.deleteMany({_id: {$in:post.comments}});
+
             await post.deleteOne();
 
 

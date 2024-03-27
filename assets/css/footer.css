@@ -1,18 +1,27 @@
 #footer {
-  padding-left: 2px;
+  padding: 10px;
   background-color: #777;
   display: flex;
   justify-content: flex-start;
-  flex-direction: row;
+  align-items: center;
   color: #dadada;
-  font-size: 13px; }
+  font-size: 13px;
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 9999; }
   #footer #pages {
     display: flex;
     align-items: center;
-    flex-direction: column; }
-    #footer #pages a {
-      margin-left: 10px;
-      text-decoration: none;
-      color: #dadada; }
-      #footer #pages a:hover {
-        color: white; }
+    margin-right: auto; }
+  #footer a {
+    margin-left: 10px;
+    text-decoration: none;
+    color: #dadada;
+    transition: color 0.3s ease; }
+    #footer a:hover {
+      color: white; }
+
+#post-list-container {
+  margin-bottom: 50px; }
