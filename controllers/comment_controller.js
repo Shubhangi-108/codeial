@@ -1,5 +1,7 @@
 const Comment = require('../models/comment');
 const Post = require('../models/post');
+const commentsMailer = require('../mailers/comment_mailer');
+const Like = require('../models/like');
 
 module.exports.create = async function(req, res){
 
@@ -15,6 +17,9 @@ module.exports.create = async function(req, res){
 
             post.comments.push(comment);
             post.save();
+
+            // comment = await comment.populate('user', 'name').execPopulate();
+            // commentsMailer.newComment(comment);
 
             // if(req.xhr){
             //     // Similar for comments to fetch the user's id!
@@ -46,6 +51,8 @@ module.exports.destroy = async function(req, res) {
         // console.log('hello1');
 
         const comment = await Comment.findById(req.params.id);
+        console.log(req.params.id);
+
 
         if (!comment) {
             return res.status(404).json({ error: "Comment not found" });
@@ -60,6 +67,8 @@ module.exports.destroy = async function(req, res) {
         await comment.deleteOne();
 
         Post.findByIdAndUpdate(postId, { $pull: { comments: req.params.id}});
+
+        await Like.deleteMany({likeable: comment._id , onModel: 'Comment'});
 
         // if (req.xhr) {
         //     return res.status(200).json({
