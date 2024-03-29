@@ -1,7 +1,7 @@
 const Post = require( '../models/post');
 const User = require('../models/user');
+const ChatMessage = require('../models/chatMessage');
 
-// console.log('hello1');
 
 module.exports.home = async function(req , res){
     // console.log(req.cookies);
@@ -27,11 +27,15 @@ module.exports.home = async function(req , res){
         // console.log(posts)
 
         const users = await User.find({})
+        // const userId = req.user.id;
+        const chatMessages = await ChatMessage.find({});
+        console.log('1' , chatMessages);
             
         return res.render('home', {
             title: 'Codeial | Home',
             posts: posts,
-            all_users : users
+            all_users : users,
+            chatMessages : chatMessages
         });
         
     } catch (err) {

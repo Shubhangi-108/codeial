@@ -1,12 +1,8 @@
 #footer {
-    padding: 10px; // Adjust padding as needed
-    background-color: #777;
+    background: grey;
+    padding: 5px 10px;
     display: flex;
-    justify-content: flex-start;
-    align-items: center; // Align items vertically
-    color: #dadada; // Text color
-    font-size: 13px;
-    position: fixed; // Fixed position to keep it at the bottom
+    justify-content: flex-start; 
     left: 0;
     right: 0;
     bottom: 0;

@@ -1,0 +1,82 @@
+#toggle-chat{
+	height: 40px;
+	background-color: #ccc;
+	transition: all 5s ease-in-out;
+}
+
+#user-chat-box{
+    position: fixed;
+    bottom: 10px;
+    right: 30px;
+	// top: 50%;
+	// left: 50%;
+    border: 1px dashed grey;
+    height: 500px;
+	width: 450px;
+	background: white;
+	padding: 5px;
+	box-shadow: 1px 1px 1px 1px lightgrey;
+	transition: all 0.3s ease-in-out;
+
+    #chat-messages-list{
+    	list-style: none;
+	    padding: 10px;
+	    height: 70%;
+	    background-color: white;
+	    overflow: auto;
+
+	    .other-message{
+		    text-align: left;
+		    padding: 5px;
+		    span{
+		    	display: inline-block;
+	    		padding: 15px;
+		    	background-color: #ffa0a0;
+		    }
+		    
+	    }
+
+	    .self-message{
+		    text-align: right;
+		    padding: 5px;
+		   
+		    span{
+		    	 
+	    		display: inline-block;
+	    		padding: 15px;
+    			background-color: #a0dcff;
+		    }
+		   
+	    }
+
+    }
+    #chat-message-input-container{
+		height: 24%;
+		width: 100%;
+		display: flex;
+		flex-direction: row;
+
+		#chat-message-input{
+			height: 50%;
+			width: 70%;
+		}
+
+		#send-message{
+			height: 50%;
+			width: 30%;
+			font-size: 25px;
+			color: white;
+			border: none;
+			background: #58d258;
+		}
+	}
+
+	&.hidden {
+		height: 0; // Reduce height to 0
+        width: 0; // Reduce width to 0
+        padding: 0; // Remove padding
+        margin: 0; // Remove margin
+        overflow: hidden;
+	}
+}
+

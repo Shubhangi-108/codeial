@@ -15,6 +15,19 @@ const MongoStore = require('connect-mongo');
 const sassMiddleware = require('node-sass-middleware');
 const flash = require('connect-flash');
 const custmMware = require('./config/middleware');
+const cors = require('cors')
+
+app.use(cors({
+    origin: 'http://localhost:8000', // Allow requests from this origin
+    methods: ['GET', 'POST'], // Allow specific HTTP methods
+    allowedHeaders: ['Content-Type'] // Allow specific headers
+}));
+
+//set up the chat server to be used with socket.io
+const chatServer = require('http').Server(app);
+const chatSockets = require('./config/chat_socket').chatSockets(chatServer);
+chatServer.listen(3000);
+console.log('Chat server is running on port 3000');
 
 app.use(sassMiddleware({
     src: './assets/scss',
