@@ -28,3 +28,7 @@
     <p>Name: <%= profile_user.name %></p>
     <p>Email: <%=profile_user.email %></p>
 <%}%>
+
+<button id="add-friend" href="/friend/add/<%=profile_user.id%>">Add Friend</button>
+<button id="remove-friend" href="/friend/remove/<%=profile_user.id%>">Remove Friend</button>
+

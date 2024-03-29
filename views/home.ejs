@@ -28,15 +28,36 @@
     </section>
     
     <section id="users-friends">
-        <h4>Friends</h4>
+        <%if(locals.user){%>
+        <h4>Users</h4>
         <%for( u of all_users){%>
+            <%if(u.id != locals.user.id){%>
             <p>
                 <a href="users/profile/<%= u.id %>">
                     <%=u.name%>
                 </a>
             </p>
+            <%}%>
         <%}%>
+        <%}else{%>
+            <%for( u of all_users){%>
+                <p>
+                    <a href="users/profile/<%= u.id %>">
+                        <%=u.name%>
+                    </a>
+                </p>
+            <%}%>
+        <%}%>
+        
+
+        <br>
+        <h4>Friends</h4>
+        
+
     </section>
+
+    <%- include('_chat_box') -%>
+
 </div>
 
 <!-- <script src="/js/home_post_comment.js" ></script> -->
@@ -49,3 +70,15 @@
         let toggleLike = new ToggleLike(self);
     });
 </script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.7.5/socket.io.js" integrity="sha512-luMnTJZ7oEchNDZAtQhgjomP1eZefnl82ruTH/3Oj/Yu5qYtwL7+dVRccACS/Snp1lFXq188XFipHKYE75IaQQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="/js/chat_engine.js"></script>
+
+<%if(locals.user){%>
+    <script>
+        new ChatEngine('user-chat-box' , '<%= locals.user.email %>' , '<%= locals.user.name %>');
+    </script>
+<%}%>
+
+<script src="js/toggle_open_chat.js"></script>
+
